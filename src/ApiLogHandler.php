@@ -20,14 +20,18 @@ class ApiLogHandler extends AbstractProcessingHandler
 
     protected function write(array $record): void
     {
+        $token = env('LOG_API_TOKEN', '');
         try {
             $this->client->post($this->apiUrl, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token, // Inclui o token no cabeçalho
+                ],
                 'json' => [
                     'level' => $record['level_name'],
                     'message' => $record['message'],
                     'context' => $record['context'],
                     'datetime' => $record['datetime']->format('Y-m-d H:i:s'),
-                    'environment' => env('APP_ENV', 'production')
+                    'environment' => env('APP_ENV', 'production'),
                 ],
             ]);
         } catch (\Exception $e) {
