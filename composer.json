@@ -1,0 +1,27 @@
+{
+    "name": "rodrigo/lib-watcher",
+    "description": "Package to publish logs on watcher api",
+    "autoload": {
+        "psr-4": {
+            "Rodrigo\\LibWatcher\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rodrigo Mariano",
+            "email": "kaynen@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Seunome\\LumenApiLogger\\LoggerServiceProvider"
+            ]
+        }
+    }
+}
